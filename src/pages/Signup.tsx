@@ -13,12 +13,12 @@ export function Signup() {
     const [showPassword, setShowPassword] = React.useState(false);
     const [err, setErr] = useState(false);
     const [madeUser, setMadeUser] = useState(false);
+
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
     }
 
-    
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { email, password } = e.target as typeof e.target & {

@@ -113,7 +113,11 @@ export function RecipeDetails() {
                     </Toolbar>
                 </Container>
             </AppBar>
-            
+            <Container>
+                <Typography mt={2} p={2} align="center" variant='h4'>
+                    {data.title}
+                </Typography>
+            </Container>
             <Box 
             sx={{ 
             display: 'flex',

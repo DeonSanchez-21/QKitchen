@@ -8,7 +8,7 @@ export function Explore() {
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [recipes, setRecipes] = useState<any[]>(() => JSON.parse(localStorage.getItem('recipes') ?? '[]'));
-    const [recipePerPage] = useState(8);
+    const [recipePerPage] = useState(12);
 
     const paginate = (event: React.ChangeEvent<unknown>,page: number ) => {
         setCurrentPage(page);

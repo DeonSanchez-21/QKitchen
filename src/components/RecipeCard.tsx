@@ -20,10 +20,10 @@ export function RecipeCard(props: KeyProp) {
     const [favRecipes, setFavRecipes] = useState<any[]>([]);
     const [inFav, setInFav] = useState(false)
     const {currentUser} = useContext<any>(AuthContext)
-    const ref = doc(db, "favorites", currentUser?.uid ?? JSON.parse(localStorage.getItem('currentUser')));
+    const ref = doc(db, "favorites", currentUser?.uid ?? JSON.parse(localStorage.getItem('currentUser') || '{}') );
 
     useEffect(()=>{
-        const getData = async () =>{
+        const getData = async () =>{ 
             const docSnap = await getDoc(ref);
             if (docSnap.exists()) {
                 setFavRecipes(docSnap.data().recipes)

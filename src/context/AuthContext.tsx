@@ -10,13 +10,16 @@ export const AuthContext = createContext<ThemeContextType>(null);
 type AuthUser = {
 
 }
+type Props = {
+  children?: React.ReactNode;
+};
 
-export const AuthContextProvider = ({ children }: React.ReactNode) => {
+export const AuthContextProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(null);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+      setCurrentUser(user);4
     });
 
     return () => {
