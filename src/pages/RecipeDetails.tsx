@@ -90,15 +90,17 @@ export function RecipeDetails() {
 
                         <Typography 
                         mr={2} 
-                        component="a" color='secondary' 
-                        href="/"
+                        component="a" 
+                        color='secondary' 
+                        href="/home"
                         variant="h4" 
                         sx={{
-                        ml: 2,
-                        fontSize: 'large',
-                        display: { xs: 'flex', md: 'flex' },
-                        fontWeight: 700,
-                        textDecoration: 'none', color: 'inherit'
+                            ml: 2,
+                            fontSize: 'large',
+                            display: { xs: 'flex', md: 'flex' },
+                            fontWeight: 700,
+                            textDecoration: 'none', 
+                            color: 'inherit'
                         }}>Q-Kitchen</Typography>
 
                         <Box flexGrow={1}></Box>

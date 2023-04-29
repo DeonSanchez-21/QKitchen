@@ -1,19 +1,22 @@
 import { AppBar, Container, Toolbar, Typography, Button, Stack, Box, Tooltip, Avatar, IconButton, Tabs, Tab } from "@mui/material";
 import FastfoodOutlinedIcon from '@mui/icons-material/FastfoodOutlined';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { Navigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext"
 
 type PageProp = {
     setPage: React.Dispatch<React.SetStateAction<any>>
     page?: number
+    loggedIn?: boolean
 }
 
-
-
-export function Navbar({ setPage, page } : PageProp ) {
+export function Navbar({ setPage, page, loggedIn } : PageProp ) {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
+    const {currentUser} = useContext<any>(AuthContext)
+    console.log(currentUser)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setPage(newValue);
@@ -23,14 +26,14 @@ export function Navbar({ setPage, page } : PageProp ) {
         signOut(auth)
         setIsLoggedIn(false);
     }
-    if (isLoggedIn === false) return <Navigate to='login'/>
+    if (isLoggedIn === false) return <Navigate to='/'/>
 
     return (
     <AppBar position="static">
         <Container>
             <Toolbar disableGutters>
                 <FastfoodOutlinedIcon fontSize='large' />
-                <Typography mr={2} component="a" href="/" variant="h4" sx={{
+                <Typography mr={2} component="a" href="/home" variant="h4" sx={{
                     ml: 2,
                     fontSize: 'large',
                     display: { xs: 'none', md: 'flex' },
@@ -42,13 +45,14 @@ export function Navbar({ setPage, page } : PageProp ) {
                     <Tab label="Explore" />
                     <Tab label="Favorites" />
                 </Tabs>
-                <Box>
-                    <Tooltip title="logout">
-                        <IconButton onClick={logOut}>
-                            <Avatar/>
-                        </IconButton>
-                    </Tooltip>
-                </Box>
+                <Stack spacing={1} direction='row'>
+                    <Button size="small" color="inherit" variant="text" onClick={logOut}>
+                        {loggedIn ? 'logout' : 'login'}
+                    </Button>
+                    <Avatar sx={{bgcolor: loggedIn ? 'white' : '', color: loggedIn ? '#1976d2' : ''}}>
+                        <LocalDiningIcon />
+                    </Avatar>
+                </Stack>
             </Toolbar>
         </Container>
     </AppBar>

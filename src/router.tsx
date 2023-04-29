@@ -8,17 +8,17 @@ import { RecipeDetails } from "./pages/RecipeDetails";
 
 export const router = createBrowserRouter([
     {
+        path: "/",
         element: <AuthLayout/>,
         children: [
-            {path: "login", element: <Login/>},
+            {index: true, element: <Login/>},
             {path: "signup", element: <Signup/>},
         ],
     },
     {
-        path: "/",
         element: <RootLayout/>,
         children: [
-            {index: true, element: <Home/>},
+            {path: "home", element: <Home/>},
             {path: "/recipeDetails/:id", element: <RecipeDetails/>}
         ],
         

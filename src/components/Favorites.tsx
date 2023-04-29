@@ -57,7 +57,7 @@ export function Favorites() {
             {loadingState === 'not_loaded' && <Box height='80vh' className='center'><CircularProgress size={100}/></Box>} 
             {loadingState === 'loading' && <Box height='80vh' className='center'><CircularProgress size={100}/></Box>} 
             {loadingState ==='error' && 'something went wrong'} 
-            {loadingState === 'loaded' && <Grid container spacing={3}> {currentRecipes}</Grid>} 
+            {loadingState === 'loaded' && <Grid my={2} container spacing={3}> {currentRecipes}</Grid>} 
            
             <Container maxWidth='sm' sx={{ display: 'flex', alignItems:'center', justifyContent: 'center'}}>
                 {recipeList.length > 9 && (<Pagination 

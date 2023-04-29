@@ -1,4 +1,4 @@
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from "@mui/material";
+import { Alert, Button, Collapse, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -17,7 +17,7 @@ export function Login() {
         event.preventDefault();
     }
 
-    if (user!= false) return  <Navigate to='/' />
+    if (user!= false) return  <Navigate to='/home' />
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault();
@@ -36,6 +36,7 @@ export function Login() {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            setErr(true);
         });
     }
 
@@ -44,6 +45,9 @@ export function Login() {
             <Typography padding={2} variant="h5">Login</Typography>
             <form onSubmit={handleSubmit}>
                 <Stack spacing={2}>
+                    <Collapse in={err}>
+                        <Alert severity="error">Something went wrong!</Alert>
+                    </Collapse>
                     <TextField label='email' id="email" variant="outlined" size="small"/>
                     <FormControl size="small" variant="outlined">
                         <InputLabel htmlFor="password">Password</InputLabel>

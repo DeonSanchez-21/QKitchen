@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Stack } from "@mui/system";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebase";
 import type { FormEvent } from 'react';
 import { doc, setDoc } from "firebase/firestore"; 
@@ -21,9 +21,10 @@ export function Signup() {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const { email, password } = e.target as typeof e.target & {
+        const { email, password, name } = e.target as typeof e.target & {
             email: { value: string }
             password: { value: string }
+            name: { value: string }
         }
         
         try {
@@ -31,6 +32,7 @@ export function Signup() {
             console.log(res);
             if(res != null) setMadeUser(true)
             await setDoc(doc(db, "favorites", res.user.uid), {recipes: []});
+            
         } catch (err) {
             setErr(true)
             console.log(err)

@@ -5,7 +5,7 @@ import "../../App.css"
 
 export function AuthLayout() {
     const location = useLocation();
-    const inLogin = location.pathname === '/login'
+    const inLogin = location.pathname === '/'
     return (
     <FullScreenCard>
         <FullScreenCard.Body>
@@ -13,7 +13,7 @@ export function AuthLayout() {
         </FullScreenCard.Body>
         <FullScreenCard.BelowCard>
             <Box className='center'>
-                <Link to={inLogin ? '/signup' : '/login'}>
+                <Link to={inLogin ? '/signup' : '/'}>
                     {inLogin ? 'Create Account' : 'Login'}
                 </Link>
             </Box>
