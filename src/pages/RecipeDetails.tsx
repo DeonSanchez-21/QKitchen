@@ -1,13 +1,13 @@
 import { AppBar, Avatar, Container, IconButton, List, ListItem, Toolbar, Tooltip, Typography, Divider} from "@mui/material";
 import { Box } from "@mui/system";
 import FastfoodOutlinedIcon from '@mui/icons-material/FastfoodOutlined';
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { fetchData } from "../utils/fetchData";
 import { RecipeData } from "../types/types";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import '../app.css'
+import '../app.css';
 
 
 
@@ -79,7 +79,7 @@ export function RecipeDetails() {
         setIsLoggedIn(false);
     }
 
-    if (isLoggedIn === false) return <Navigate to='/login'/>;
+    if (isLoggedIn === false) return <Navigate to='/home'/>;
 
     return (
         <Box>
@@ -87,21 +87,22 @@ export function RecipeDetails() {
                 <Container>
                     <Toolbar disableGutters>
                         <FastfoodOutlinedIcon  fontSize='large' />
-
-                        <Typography 
-                        mr={2} 
-                        component="a" 
-                        color='secondary' 
-                        href="/home"
-                        variant="h4" 
-                        sx={{
-                            ml: 2,
-                            fontSize: 'large',
-                            display: { xs: 'flex', md: 'flex' },
-                            fontWeight: 700,
-                            textDecoration: 'none', 
-                            color: 'inherit'
-                        }}>Q-Kitchen</Typography>
+                        
+                            <Typography 
+                            mr={2} 
+                            color='secondary' 
+                            variant="h4" 
+                            sx={{
+                                ml: 2,
+                                fontSize: 'large',
+                                display: { xs: 'flex', md: 'flex' },
+                                fontWeight: 700,
+                                textDecoration: 'none', 
+                                color: 'inherit'
+                            }}>
+                                <Link style={{textDecoration: 'none', color:'white'}} to="/home">Q-Kitchen</Link>
+                            </Typography>
+                        
 
                         <Box flexGrow={1}></Box>
 

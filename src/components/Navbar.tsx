@@ -3,7 +3,7 @@ import FastfoodOutlinedIcon from '@mui/icons-material/FastfoodOutlined';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext"
 
@@ -33,14 +33,16 @@ export function Navbar({ setPage, page, loggedIn } : PageProp ) {
         <Container>
             <Toolbar disableGutters>
                 <FastfoodOutlinedIcon fontSize='large' />
-                <Typography mr={2} component="a" href="/home" variant="h4" sx={{
+                <Typography mr={2} variant="h4" sx={{
                     ml: 2,
                     fontSize: 'large',
                     display: { xs: 'none', md: 'flex' },
                     fontWeight: 700,
                     color: 'inherit',
                     textDecoration: 'none',
-                }}>Q-Kitchen</Typography>
+                }}>
+                    <Link style={{textDecoration: 'none', color:'white'}} to="/home">Q-Kitchen</Link>
+                </Typography>
                 <Tabs textColor="inherit" value={page} onChange={handleChange} sx={{flexGrow: 1}} >
                     <Tab label="Explore" />
                     <Tab label="Favorites" />
