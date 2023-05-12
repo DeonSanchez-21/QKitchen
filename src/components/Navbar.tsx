@@ -16,7 +16,6 @@ type PageProp = {
 export function Navbar({ setPage, page, loggedIn } : PageProp ) {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const {currentUser} = useContext<any>(AuthContext)
-    console.log(currentUser)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setPage(newValue);
@@ -32,7 +31,7 @@ export function Navbar({ setPage, page, loggedIn } : PageProp ) {
     <AppBar position="static">
         <Container>
             <Toolbar disableGutters>
-                <FastfoodOutlinedIcon fontSize='large' />
+                <FastfoodOutlinedIcon sx={{ display:{ xs:'none', sm:'flex'}}} fontSize='large' />
                 <Typography mr={2} variant="h4" sx={{
                     ml: 2,
                     fontSize: 'large',
@@ -43,12 +42,13 @@ export function Navbar({ setPage, page, loggedIn } : PageProp ) {
                 }}>
                     <Link style={{textDecoration: 'none', color:'white'}} to="/home">Q-Kitchen</Link>
                 </Typography>
-                <Tabs textColor="inherit" value={page} onChange={handleChange} sx={{flexGrow: 1}} >
-                    <Tab label="Explore" />
+                <Tabs centered textColor="inherit" value={page} onChange={handleChange} sx={{flexGrow: 1}} >
+                    <Tab label="Recipes" />
+                    <Tab label="Dining" />
                     <Tab label="Favorites" />
                 </Tabs>
                 <Stack spacing={1} direction='row'>
-                    <Button size="small" color="inherit" variant="text" onClick={logOut}>
+                    <Button sx={{ display:{ xs:'none', sm:'flex'}}} size="small" color="inherit" variant="text" onClick={logOut}>
                         {loggedIn ? 'logout' : 'login'}
                     </Button>
                     <Avatar sx={{bgcolor: loggedIn ? 'white' : '', color: loggedIn ? '#1976d2' : ''}}>

@@ -1,6 +1,7 @@
-import { AppBar, Avatar, Container, IconButton, List, ListItem, Toolbar, Tooltip, Typography, Divider} from "@mui/material";
+import { AppBar, Avatar, Container, IconButton, List, ListItem, Toolbar, Tooltip, Typography, Divider, Stack, Button} from "@mui/material";
 import { Box } from "@mui/system";
 import FastfoodOutlinedIcon from '@mui/icons-material/FastfoodOutlined';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import { Link, Navigate, useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { fetchData } from "../utils/fetchData";
@@ -8,7 +9,6 @@ import { RecipeData } from "../types/types";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import '../app.css';
-
 
 
 export function RecipeDetails() {
@@ -41,6 +41,7 @@ export function RecipeDetails() {
         }
         getData();
     },[])
+
     
     const stepList = data.analyzedInstructions[0].steps.map((item) => {
         const step: string = item.step;
@@ -106,13 +107,14 @@ export function RecipeDetails() {
 
                         <Box flexGrow={1}></Box>
 
-                        <Box>
-                            <Tooltip title="Logout">
-                                <IconButton onClick={logOut}>
-                                    <Avatar/>
-                                </IconButton>
-                            </Tooltip>
-                        </Box>
+                        <Stack spacing={1} direction='row'>
+                            <Button sx={{ display:{ xs:'none', sm:'flex'}}} size="small" color="inherit" variant="text" onClick={logOut}>
+                                {isLoggedIn ? 'logout' : 'login'}
+                            </Button>
+                            <Avatar sx={{bgcolor: isLoggedIn ? 'white' : '', color: isLoggedIn ? '#1976d2' : ''}}>
+                                <LocalDiningIcon />
+                            </Avatar>
+                        </Stack>
                     </Toolbar>
                 </Container>
             </AppBar>
@@ -122,9 +124,9 @@ export function RecipeDetails() {
                 </Typography>
             </Container>
             <Box 
-            sx={{ 
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row'}}}>
+                sx={{ 
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row'}}}>
                 <Box width={{xs: 1/1, md: 2/4}} p={2}>
                     <img className="img" src={data.image}/>
                     <Box mt={1}>

@@ -4,9 +4,8 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { RecipeCard } from "./RecipeCard";
 import { Box, Container } from "@mui/system";
-import { Pagination } from "@mui/lab";
 import Grid from "@mui/material/Grid";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography, Pagination } from "@mui/material";
 
 export function Favorites() {
     const {currentUser} = useContext<any>(AuthContext)
@@ -24,7 +23,7 @@ export function Favorites() {
 
     useEffect(()=>{
         setLoadingState('loading')
-        const getData = async () =>{
+        const getData = async () => {
             const docSnap = await getDoc(ref);
             if (docSnap.exists()) {
                 setRecipes(docSnap.data().recipes)
@@ -53,11 +52,12 @@ export function Favorites() {
     const currentRecipes = recipeList?.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
     return (
-        <>
+        <>  
+            
             {loadingState === 'not_loaded' && <Box height='80vh' className='center'><CircularProgress size={100}/></Box>} 
             {loadingState === 'loading' && <Box height='80vh' className='center'><CircularProgress size={100}/></Box>} 
             {loadingState ==='error' && 'something went wrong'} 
-            {loadingState === 'loaded' && <Grid my={2} container spacing={3}> {currentRecipes}</Grid>} 
+            {loadingState === 'loaded' && <><Typography my={2} variant="h4">Favorite Recipes:</Typography><Grid mb={1.5} container spacing={3}> {currentRecipes}</Grid></>} 
            
             <Container maxWidth='sm' sx={{ display: 'flex', alignItems:'center', justifyContent: 'center'}}>
                 {recipeList.length > 9 && (<Pagination 

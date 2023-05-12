@@ -56,7 +56,7 @@ export function Explore() {
                 </Paper>
             </Container>
             <Box sx={{flexGrow: 1, m: 3}}>
-                {recipeList?.length !== 0 && <Typography sx={{textTransform: 'capitalize'}} my={2} variant="h4"> {term} results:</Typography>}
+                {recipeList?.length !== 0 && <Typography sx={{textTransform: 'capitalize'}} my={2} variant="h4"> {term? term : 'recent'} recipies:</Typography>}
                 {recipeList?.length === 0 ? <Typography align="center" variant="h4">No Results Found</Typography> : <Grid container spacing={3} > {currentRecipes} </Grid>}
             </Box>
             <Container maxWidth='sm' sx={{ display: 'flex', alignItems:'center', justifyContent: 'center'}}>
