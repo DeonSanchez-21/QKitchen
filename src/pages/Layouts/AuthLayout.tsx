@@ -20,5 +20,4 @@ export function AuthLayout() {
         </FullScreenCard.BelowCard>
     </FullScreenCard>
     )
-
 }

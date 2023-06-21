@@ -4,8 +4,7 @@ import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, Navigate } from "react-router-dom";
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext"
+import React, { useState } from "react";
 
 type PageProp = {
     setPage: React.Dispatch<React.SetStateAction<any>>
@@ -15,7 +14,6 @@ type PageProp = {
 
 export function Navbar({ setPage, page, loggedIn } : PageProp ) {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
-    const {currentUser} = useContext<any>(AuthContext)
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setPage(newValue);

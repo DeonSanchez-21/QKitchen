@@ -17,7 +17,7 @@ type KeyProp = {
 }
 
 export function RecipeCard(props: KeyProp) {
-    const [favRecipes, setFavRecipes] = useState<any[]>([]);
+    const [favRecipes, setFavRecipes] = useState<{num: number}[]>([]);
     const [inFav, setInFav] = useState(false)
     const {currentUser} = useContext<any>(AuthContext)
     const ref = doc(db, "favorites", currentUser?.uid ?? JSON.parse(localStorage.getItem('currentUser') || '{}') );

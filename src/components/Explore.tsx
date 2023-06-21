@@ -7,11 +7,11 @@ import { fetchData } from "../utils/fetchData";
 export function Explore() {
     const [search, setSearch] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [recipes, setRecipes] = useState<any[]>(() => JSON.parse(localStorage?.getItem('recipes') ?? '[]'));
+    const [recipes, setRecipes] = useState<{id: number; title: string; image: string; imageType: string}[]>(() => JSON.parse(localStorage?.getItem('recipes') ?? '[]'));
     const [recipePerPage] = useState(12);
     const [term, setTerm] = useState('');
 
-    const paginate = (event: React.ChangeEvent<unknown>,page: number ) => {
+    const paginate = (event: React.ChangeEvent<unknown>, page: number ) => {
         setCurrentPage(page);
         
         window.scrollTo({ top: 200, behavior: 'smooth' });

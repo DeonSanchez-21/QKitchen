@@ -12,7 +12,7 @@ export function Favorites() {
     const ref = doc(db, "favorites", currentUser.uid);
     const [currentPage, setCurrentPage] = useState(1);
     const [recipePerPage] = useState(8);
-    const [recipes, setRecipes] = useState<any[]>([]);
+    const [recipes, setRecipes] = useState<{num: number; title: string; image: string; imageType: string}[]>([]);
     const [ loadingState, setLoadingState ] = useState('not_loaded')
 
     const paginate = (event: React.ChangeEvent<unknown>,page: number ) => {
@@ -53,7 +53,6 @@ export function Favorites() {
 
     return (
         <>  
-            
             {loadingState === 'not_loaded' && <Box height='80vh' className='center'><CircularProgress size={100}/></Box>} 
             {loadingState === 'loading' && <Box height='80vh' className='center'><CircularProgress size={100}/></Box>} 
             {loadingState ==='error' && 'something went wrong'} 

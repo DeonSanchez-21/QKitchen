@@ -6,14 +6,14 @@ import { RestaurantCard } from '../components/RestaurantCard'
 
 export function Restaurants(){
     const [search, setSearch] = useState('');
-    const [restaurants, setRestaurants] = useState<any[]>(() => JSON.parse(localStorage?.getItem('restaurants') ?? '[]'));
+    const [restaurants, setRestaurants] = useState<{name: string; phone_number: string; address: { lat: string; lon: string; street_addr: string; };  _id: number; miles: string; logo_photos: string; is_open: boolean; offers_first_party_delivery: boolean}[]>(() => JSON.parse(localStorage.getItem('restaurants') ?? '[]'));
     const [term, setTerm] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1);
     const [restaurantsPerPage] = useState(12);
 
-    const [long, setLong] = useState<any>('')
-    const [lat, setLat] = useState<any>('')
+    const [long, setLong] = useState<number | null>(null)
+    const [lat, setLat] = useState<number | null>(null)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -23,14 +23,14 @@ export function Restaurants(){
     },[])
 
     useEffect(()=>{
-        window.localStorage.setItem('restaurants', JSON.stringify(restaurants))
+        window.localStorage.setItem('restaurants', JSON.stringify(restaurants) )
         
     },[restaurants])
 
     const handleSearch = async () => {
         if (search) {
             const restaurantsData = await fetchData(`https://api.spoonacular.com/food/restaurants/search?apiKey=90eac845919f468a927fd33e482f15e5&query=${term}&lat=${lat}&lng=${long}`);
-            setRestaurants(restaurantsData?.restaurants );
+            setRestaurants(restaurantsData?.restaurants ?? []);
             setCurrentPage(1)
             setTerm(search)
         }

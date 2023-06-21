@@ -48,8 +48,8 @@ export function Home() {
     const [isLoggedIn, setIsLoggedIn] = useState(true)
     const [page, setPage] = useState(0); 
     const {currentUser} = useContext<any>(AuthContext);
-    const [long, setLong] = useState<any>('');
-    const [lat, setLat] = useState<any>('');
+    const [long, setLong] = useState<number | null>(null);
+    const [lat, setLat] = useState<number | null>(null);
     
     const loggedIn = currentUser ? true : false;
 
@@ -75,7 +75,7 @@ export function Home() {
                 <Explore/>
             </TabPanel>
             <TabPanel value={page} index={1}>
-                { long === '' ? <LocationCard/> : <Restaurants/>}
+                { long === null ? <LocationCard/> : <Restaurants/>}
             </TabPanel>
             <TabPanel value={page} index={2}>
                 {currentUser? <Favorites/> : <Box minHeight='90vh' sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}><Button  size="large" variant="contained" onClick={logOut}><Typography >Click Here To Login</Typography></Button></Box>}
