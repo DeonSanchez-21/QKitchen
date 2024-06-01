@@ -48,7 +48,7 @@ export function Explore() {
         <Box>
             <Container sx={{py:4}} maxWidth='sm'>
                 <Paper elevation={3} sx={{display: 'flex', alignItems: 'center', p: 1}} component='form' onSubmit={(e) => e.preventDefault()}>
-                    <InputBase sx={{ml: 1, flex: 1}} placeholder="Search Recipe" onChange={(e) => setSearch(e.target.value.toLowerCase())}/>
+                    <InputBase sx={{ml: 1, flex: 1, width: '100%'}} placeholder="Search Recipe" onChange={(e) => setSearch(e.target.value.toLowerCase())}/>
                     <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                     <IconButton type="submit" onClick={handleSearch}>
                         <SearchIcon />
@@ -56,7 +56,7 @@ export function Explore() {
                 </Paper>
             </Container>
             <Box sx={{flexGrow: 1, m: 3}}>
-                {recipeList?.length !== 0 && <Typography sx={{textTransform: 'capitalize'}} my={2} variant="h4"> {term? term : 'recent'} recipies:</Typography>}
+                {recipeList?.length !== 0 && <Typography sx={{textTransform: 'capitalize', }} color='text' my={2} variant="h4"> {term? term : 'recent'} recipies:</Typography>}
                 {recipeList?.length === 0 ? <Typography align="center" variant="h4">No Results Found</Typography> : <Grid container spacing={3} > {currentRecipes} </Grid>}
             </Box>
             <Container maxWidth='sm' sx={{ display: 'flex', alignItems:'center', justifyContent: 'center'}}>

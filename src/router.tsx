@@ -3,23 +3,25 @@ import { RootLayout } from "./pages/Layouts/RootLayout";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/Signup";
 import { createBrowserRouter } from "react-router-dom";
-import { Home } from "./pages/Home";
 import { RecipeDetails } from "./pages/RecipeDetails";
+import Landing from "./pages/Landing";
+import Home from "./pages/Home";
 
 export const router = createBrowserRouter([
     {
-        path: "/",
         element: <AuthLayout/>,
         children: [
-            {index: true, element: <Login/>},
-            {path: "signup", element: <Signup/>},
+            {path: "/login", element: <Login/>},
+            {path: "/signup", element: <Signup/>},
         ],
     },
     {
+        path: "/",
         element: <RootLayout/>,
         children: [
-            {path: "/home", element: <Home/>},
-            {path: "/recipeDetails/:id", element: <RecipeDetails/>}
+            {index: true, element: <Landing/>},
+            {path: "home", element: <Home/>},
+            {path: "recipeDetails/:id", element: <RecipeDetails/>}
         ],
         
     },

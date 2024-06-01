@@ -10,3 +10,27 @@
     width: 100%;
     object-fit: cover;
 }
+.tabpanel{
+    width: 100%;
+}
+.try_meal_plan_img{
+    width: 50px;
+    border-radius: 12px;
+    border: none;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+.hover:hover{
+    cursor: pointer;
+}
+.btn_txt{
+    text-decoration: none;
+    color: white;
+}
+.dash_meal_img{
+    width: 125px;
+    object-fit: cover;
+    border: none;
+    border-radius: 12px;
+    aspect-ratio: 1/1;
+}

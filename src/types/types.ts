@@ -19,3 +19,19 @@ export type Step = {
     step: string,
     name: string
 }
+
+
+export type KeyProp = {
+    index: number,
+    id: number,
+    readyIn: number,
+    title: string,
+    image: string,
+    nutrition: Nutrients[],
+    ingredients: Ingredients[],
+}
+
+export type Nutrients = {
+    name: string,
+    amount: number
+}

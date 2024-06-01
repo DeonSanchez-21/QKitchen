@@ -84,7 +84,7 @@ export function RecipeDetails() {
 
     return (
         <Box>
-            <AppBar position='static'>
+            <AppBar color="secondary" position='static'>
                 <Container>
                     <Toolbar disableGutters>
                         <FastfoodOutlinedIcon  fontSize='large' />
@@ -101,7 +101,7 @@ export function RecipeDetails() {
                                 textDecoration: 'none', 
                                 color: 'inherit'
                             }}>
-                                <Link style={{textDecoration: 'none', color:'white'}} to="/home">Q-Kitchen</Link>
+                                <Link style={{textDecoration: 'none', color:'#362417'}} to="/home">Q-Kitchen</Link>
                             </Typography>
                         
 
@@ -112,7 +112,7 @@ export function RecipeDetails() {
                                 {isLoggedIn ? 'logout' : 'login'}
                             </Button>
                             <Avatar sx={{bgcolor: isLoggedIn ? 'white' : '', color: isLoggedIn ? '#1976d2' : ''}}>
-                                <LocalDiningIcon />
+                                <LocalDiningIcon color="info"/>
                             </Avatar>
                         </Stack>
                     </Toolbar>

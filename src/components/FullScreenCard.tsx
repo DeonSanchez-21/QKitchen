@@ -14,6 +14,10 @@ export function FullScreenCard({ children }: FullScreenCardProps){
     </Box>) 
 }
 
+FullScreenCard.AboveCard = function({children} : FullScreenCardProps){
+    return  <Box m={2}>{children}</Box>
+}
+
 FullScreenCard.Body =  function({children } : FullScreenCardProps) {
     return <Paper className='center' sx={{width: '350px', height: 'auto', flexDirection: 'column', paddingBottom: "1.5rem"}}>{children}</Paper>
 }

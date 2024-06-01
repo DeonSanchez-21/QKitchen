@@ -65,7 +65,7 @@ export function Restaurants(){
   return (
     <Box>
         <Container sx={{py:4}} maxWidth='sm'>
-            <Paper elevation={3} sx={{display: 'flex', alignItems: 'center', p: 1}} component='form' onSubmit={(e) => e.preventDefault()}>
+            <Paper elevation={3} sx={{display: 'flex', alignItems: 'center', p: 1, width:'100%'}} component='form' onSubmit={(e) => e.preventDefault()}>
                 <InputBase sx={{ml: 1, flex: 1}} placeholder="Search Restaurant" onChange={(e) => setSearch(e.target.value.toLowerCase())}/>
                 <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
                 <IconButton type="submit" onClick={handleSearch}>
